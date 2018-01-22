@@ -12,7 +12,7 @@ import smtplib, string, subprocess
 
 # Settings
 #When editing these lines, remove the <>, but not the quotes
-fromaddr = 'natsmith@mymail.mines.edu' #'<insert from addr here>'  
+fromaddr = 'robert.schreibman@gmail.com' #'<insert from addr here>'  
 toaddr  = 'robert.schreibman@gmail.com' #'<insert any email addr you have access to>'  
 
 # Googlemail login details
