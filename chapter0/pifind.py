@@ -12,12 +12,12 @@ import smtplib, string, subprocess
 
 # Settings
 #When editing these lines, remove the <>, but not the quotes
-fromaddr = '<insert from addr here>'  
-toaddr  = '<insert any email addr you have access to>'  
+fromaddr = 'natsmith@mymail.mines.edu' #'<insert from addr here>'  
+toaddr  = 'robert.schreibman@gmail.com' #'<insert any email addr you have access to>'  
 
 # Googlemail login details
-username = '<your username for the gmail account without @gmail.com>'  
-password = '<the password for that account>'  
+username = 'robert.schreibman' #'<your username for the gmail account without @gmail.com>'  
+password = 'imnotsure18' #'<the password for that account>'  
 
 output_if = subprocess.Popen(['ifconfig'], stdout=subprocess.PIPE).communicate()[0]
 output_cpu = open('/proc/cpuinfo', 'r').read()
