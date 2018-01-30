@@ -15,6 +15,7 @@ pin24 = 24
 pin23 = 23
 sleeptime = 0.2
 slowsleeptime = 1
+flag = 0
 
 GPIO.setmode(GPIO.BCM)		#set pin mode to use numbers from the board
 GPIO.setup(pin25,GPIO.OUT)	#set pin number to be an output pin direction
@@ -26,6 +27,7 @@ GPIO.setup(pin23,GPIO.OUT)
 def offmode():
 	GPIO.output(pin25, False)
 	GPIO.output(pin23, False)
+	t.sleep(0.1)
 
 def blinkmode():
 	GPIO.output(pin25,True)
@@ -44,12 +46,20 @@ def slowblinkmode():
 	t.sleep(slowsleeptime)
 
 def doNothing():
-	offmode()
-
-try:
+	print("sup Caleb")
+'''
+def main(flag):
+	if flag == 0:
+		slowblinkmode()
+	elif flag == 1:
+		blinkmode()
+	elif flag == 2:
+		offmode()
+'''	
+try:	
 	while True:
 		while GPIO.input(pin24) == True:
-			doNothin()
+			doNothing()
 		while GPIO.input(pin24) == False:	
 			slowblinkmode()
 
