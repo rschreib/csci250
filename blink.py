@@ -32,6 +32,7 @@ def blinkmode():
 
 def offmode():
 	GPIO.output(pin25, False)
+	GPIO.output(pin23, False)
 
 try:
 	while True:
