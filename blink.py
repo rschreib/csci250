@@ -12,18 +12,22 @@ import time as t		#contains sleep command
 #This makes code easier to read and understand
 pin25 = 25
 pin24 = 24
+pin23 = 23
 sleeptime = 0.2
 
 GPIO.setmode(GPIO.BCM)		#set pin mode to use numbers from the board
 GPIO.setup(pin25,GPIO.OUT)	#set pin number to be an output pin direction
 GPIO.setup(pin24,GPIO.IN)
+GPIO.setup(pin23,GPIO.OUT)
 
 #blink - pull high, True, 3.3V OR low, Flase, 0V
 
 def blinkmode():
 	GPIO.output(pin25,True)
+	GPIO.output(pin23,False)
 	t.sleep(sleeptime)
 	GPIO.output(pin25,False)
+	GPIO.output(pin23,True)
 	t.sleep(sleeptime)
 
 def offmode():
