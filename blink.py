@@ -31,9 +31,9 @@ def offmode():
 
 try:
 	while True:
-		while GPIO.input(pin24) == True:	
+		while GPIO.input(pin24) == False:	
 			blinkmode()
-		while GPIO.input(pin24) == False:
+		while GPIO.input(pin24) == True:
 			offmode()
 		
 except(KeyboardInterrupt, SystemExit):
