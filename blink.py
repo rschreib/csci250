@@ -25,9 +25,9 @@ def blinkmode():
 	t.sleep(sleeptime)
 	GPIO.output(pin25,False)
 	t.sleep(sleeptime)
+
 def offmode():
 	GPIO.output(pin25, False)
-	t.sleep(sleeptime)
 
 try:
 	while True:
