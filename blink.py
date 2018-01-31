@@ -49,11 +49,14 @@ def doNothing():
 
 try:
 	while True:
-		while GPIO.input(pin24) == False:	
+		if GPIO.input(pin24) == False:	
+			print("Blink Mode")
 			blinkmode()
-		while GPIO.input(pin24) == True:
+		if GPIO.input(pin24) == True:
+			print("Off")
 			offmode()
 
+<<<<<<< HEAD
 # The code below will recognize button presses and enter 3 different
 # modes of LED light blinking. The LEDs connected to pin23 and pin25 alternate blinking.
 '''
@@ -68,6 +71,8 @@ try:
 			doNothing()
 		while GPIO.input(pin24) == False:
 			blinkmode()
+=======
+>>>>>>> 0bffafdfaa4186813fd0528b134fea2c3ba89446
 		
 		while GPIO.input(pin24) == True:
 			doNothing()
