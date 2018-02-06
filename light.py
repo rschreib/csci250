@@ -20,19 +20,24 @@ spi = spidev.SpiDev()                   #initiate spi object
 spi.open(adc_channel, spi_channel)      #adc channel=0 (can use 1) and spi channel=0
 spi.max_speed_hz = 1000000              #is 1 MHz can change the value but this worked best
 
-for i in range(1,500):  #loop 500 times
+for i in range(500):  #loop 500 times
 	sleep(.001)     #sleep .001s in between light readings
 	x = reader.read(0)
 	#print(x)
 	arr.append(x)   #append to list
 
-print(arr)
+#print(arr)
 
 nArray = n.array(arr)   #store data elements into numpy array
 print(len(nArray))
 
-# The code below will recognize button presses and enter 3 different
+stringArr = {}
+for i in range(len(nArray)):
+	stringArr[i] =  "%.2f" % (nArray[i]*100) + "%"
 
-
+print(nArray)
+print(type(nArray[0]))
+print(stringArr)
+print(type(stringArr[0]))
 
 
