@@ -29,7 +29,9 @@ for i in range(1,500):  #loop 500 times
 print(arr)
 
 nArray = n.array(arr)   #store data elements into numpy array
+print(len(nArray))
 
+# The code below will recognize button presses and enter 3 different
 
 
 
