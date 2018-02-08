@@ -1,7 +1,7 @@
 #Author: Robert Schreibman
 #Date: 2-8-18
 #Description:
-#Stop … Think Exercise Answers: a1, a2, a3, and c1
+#Think Exercise Answers: a1, a2, a3, and c1
 
 #Questions
 #a1) At what clock value is data transmitted? (0-falling or 1-rising?)
@@ -12,18 +12,17 @@
     # 2 bytes are transmitted (only uses 10 bits though)
 
 #import libraries:
-import GPIO as g
 from time import sleep          #time to use the sleep command
-import numpy as                 #numpy for arrays
-import spidef                   #spidev as spi for working with the ADC
-import reader                   #ADC reader code ... inline vs. included library
+import numpy	                #numpy for arrays
+import spidev                   #spidev as spi for working with the ADC
+#import reader                   #ADC reader code ... inline vs. included library
 #import json
 import matplotlib.pyplot as p
 import RPi.GPIO as GPIO		#controls General Purpose I/O pins
 
 spi = spidev.SpiDev() #create spidev object
 spi.open(0,0) #(port, channel)
-spi.max_speed_hz = 10000000 #optional, use so you don’t overwork RPi
+spi.max_speed_hz = 10000000 #optional, use so you dont overwork RPi
 
 pin18 = 18      #Button (input signal)
 pin19 = 19      #Green LED (output signal)
@@ -33,7 +32,7 @@ GPIO.setup(pin18,GPIO.IN)
 GPIO.setup(pin19,GPIO.OUT)
 GPIO.setup(pin20,GPIO.OUT)
 
-def readAdc(channel)
+def readAdc(channel):
     #You may use the incoming parameter to make more flexible later
     #Read the raw data for channel 0 using the xfer2 method, which
     #sends AND receives depending on the clock rise/fall.
@@ -47,12 +46,10 @@ def readAdc(channel)
     return data
 
 try:  
-    while True:
-        x = readAdc(0)
-        
-        
-
-
+	while True:
+		x = readAdc(0)
+		print(x)
+	
 except(KeyboardInterrupt, SystemExit):
 	print("User requested exit... shutting down now")
 
