@@ -10,6 +10,7 @@
     # 1-rising edge of clock
 #a3) How many bytes are transmitted/received? (recall 1 byte = 8 bits)
     # 2 bytes are transmitted (only uses 10 bits though)
+#c1) Max Value for 10 bits is 2^10 - 1 = 1023
 
 #import libraries:
 import numpy	                #numpy for arrays
