@@ -12,12 +12,9 @@
     # 2 bytes are transmitted (only uses 10 bits though)
 
 #import libraries:
-from time import sleep          #time to use the sleep command
 import numpy	                #numpy for arrays
+from time import sleep          #time to use the sleep command
 import spidev                   #spidev as spi for working with the ADC
-#import reader                   #ADC reader code ... inline vs. included library
-#import json
-import matplotlib.pyplot as p
 import RPi.GPIO as GPIO		#controls General Purpose I/O pins
 
 spi = spidev.SpiDev() #create spidev object
@@ -32,6 +29,7 @@ GPIO.setup(pin18,GPIO.IN)
 GPIO.setup(pin19,GPIO.OUT)
 GPIO.setup(pin20,GPIO.OUT)
 
+
 def readAdc(channel):
     #You may use the incoming parameter to make more flexible later
     #Read the raw data for channel 0 using the xfer2 method, which
@@ -45,13 +43,13 @@ def readAdc(channel):
     data = int(s[8:] + '0'*8, 2) + r[1]
     return data
 
-try:  
-	while True:
-		x = readAdc(0)
-		print(x)
-	
-except(KeyboardInterrupt, SystemExit):
-	print("User requested exit... shutting down now")
+  
+while True:
+    x = readAdc(0)
+    print(x)
 
 finally:
 	GPIO.cleanup()
+
+
+
