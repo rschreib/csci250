@@ -30,6 +30,19 @@ GPIO.setup(pin18,GPIO.IN)
 GPIO.setup(pin19,GPIO.OUT)
 GPIO.setup(pin20,GPIO.OUT)
 
+#Buzz function is provided (uses half period method)
+#This code is derived from basics physics of how sound works but to save time
+#we googled those calculations.
+def buzz(pitch, duration):
+    period = 1.0 / pitch
+    delay = period / 2
+    cycles = int(duration * pitch)
+    for i in range(cycles):
+        GPIO.output(buzzerPin, True)
+        time.sleep(delay)
+        GPIO.output(buzzerPin, False)
+        time.sleep(delay)
+        time.sleep(duration * 0.3)
 
 def readAdc(channel):
     #You may use the incoming parameter to make more flexible later
