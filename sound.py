@@ -22,7 +22,7 @@ import RPi.GPIO as GPIO		#controls General Purpose I/O pins
 
 spi = spidev.SpiDev() #create spidev object
 spi.open(0,0) #(port, channel)
-spi.max_speed_hz = 10000000 #optional, use so you dont overwork RPi
+spi.max_speed_hz = 1000000 #optional, use so you dont overwork RPi
 
 pin18 = 18      #Button (input signal)
 pin19 = 19      #Green LED (output signal)
