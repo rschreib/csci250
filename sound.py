@@ -48,8 +48,5 @@ while True:
     x = readAdc(0)
     print(x)
 
-finally:
-	GPIO.cleanup()
-
 
 
