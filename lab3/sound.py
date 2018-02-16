@@ -13,24 +13,18 @@
 #c1) Max Value for 10 bits is 2^10 - 1 = 1023
 
 #import libraries:
-import numpy	                #numpy for arrays
+import numpy as np              #numpy for arrays
 import time		        #time to use the sleep command
 import spidev                   #spidev as spi for working with the ADC
 import RPi.GPIO as GPIO		#controls General Purpose I/O pins
 
-#pin18 = 18      #Button (input signal)
-buzzerPin = 19      #Green LED (output signal)
-#pin20 = 20      #Red LED (output signal)
+buzzerPin = 19      #(output signal)
 GPIO.setmode(GPIO.BCM)
-#GPIO.setup(pin18,GPIO.IN)       
 GPIO.setup(buzzerPin,GPIO.OUT)
-#GPIO.setup(pin20,GPIO.OUT)
-
 
 spi = spidev.SpiDev() #create spidev object
 spi.open(0,0) #(port, channel)
 spi.max_speed_hz = 1000000 #optional, use so you dont overwork RPi
-
 
 #Buzz function is provided (uses half period method)
 #This code is derived from basics physics of how sound works but to save time
@@ -58,9 +52,18 @@ def readAdc(channel):
     #append 8 '0's to last 2 bits from r[0]
     data = int(s[8:] + '0'*8, 2) + r[1]
     return data
-  
+
+data = np.loadtxt("song.txt")
+print(data)
+pitches = np.int_(data[:,0])
+print(pitches)
+
 while True:
     x = readAdc(0)
+    print(x)
+    for val1, val2 in zip(pitches,data[:,1]):
+        buzz(val1, val2)
+
     buzz(500,.2)
 
 
