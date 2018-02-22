@@ -5,7 +5,6 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-import operator
 
 data = np.loadtxt("data.csv", delimiter=",")
 
