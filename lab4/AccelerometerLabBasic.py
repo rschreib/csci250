@@ -19,15 +19,14 @@ try:
         #1. Address of the device
         #2. Communication data - active mode control register
         #3. Our data - 0 (standby mode) or 1 (active)
-        bus.write_byte_data(0x1D, 0x2A, 1) 
-        time.sleep(0.5)
-
+        bus.write_byte_data(0x1D, 0x2A, 1)
+		time.sleep(0.5)
         #Read from the status register, real-time status register 0x00
         #Data returned will be an array
         #Contents of 7 bytes read and stored in data array represent:
         #status (ignore), MSBx, LSBx, MSBy, LSBy, MSBz, LSBz
-        data = bus.read_i2c_block_data(0x1D, 0x00, 7)     
-
+        data = bus.read_i2c_block_data(0x1D, 0x00, 7)
+		
         #put register in standbye mode
         bus.write_byte_data(0x1D, 0x2A, 0)
 		time.sleep(0.5)
