@@ -52,7 +52,10 @@ try:
 		zAccl = (MSB_z * 256 + LSB_z) / numberOfBits
 		if zAccl > 2047:
 			zAccl -= 4096
-			
+		print("x: ",xAccl)
+		print("y: ",yAccel)
+		print("z: ",zAccel)
+		
 			
 			
 #capture the control c and exit cleanly
