@@ -34,6 +34,7 @@ try:
         time.sleep(0.5)
 
         print(data)
+		
 		'''
 		MSB_x = data[1]
 		LSB_x = data[2]
@@ -41,7 +42,8 @@ try:
 		xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
 		if xAccl > 2047:
 			xAccl -= 4096
-			'''
+		'''
+		
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit): 
