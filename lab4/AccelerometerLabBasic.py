@@ -9,9 +9,6 @@ import time
 
 # Get I2C bus - initial bus to channel 1
 bus = smbus.SMBus(1) 
-#class Accelerometer():
-
-
 
 try:
     while True:
@@ -27,7 +24,6 @@ try:
         #Contents of 7 bytes read and stored in data array represent:
         #status (ignore), MSBx, LSBx, MSBy, LSBy, MSBz, LSBz
         data = bus.read_i2c_block_data(0x1D, 0x00, 7)     
-
         #put register in standbye mode
         bus.write_byte_data(0x1D, 0x2A, 0)
 		time.sleep(0.5)
@@ -44,10 +40,8 @@ try:
 		zAccl = (MSB_z * 256 + LSB_z) / numberOfBits
 		if xAccl > 2047:
 			xAccl -= 4096
-
 		if yAccl > 2047:
 			yAccl -= 4096	
-
 		if zAccl > 2047:
 			zAccl -= 4096
 		print("x: ",xAccl)
