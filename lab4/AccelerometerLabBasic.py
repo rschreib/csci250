@@ -29,18 +29,19 @@ try:
         data = bus.read_i2c_block_data(0x1D, 0x00, 7)     
 
 		
+        #put register in standbye mode
+        bus.write_byte_data(0x1D, 0x2A, 0) 
+        time.sleep(0.5)
+
+        print(data)
+		'''
 		MSB_x = data[1]
 		LSB_x = data[2]
 		numberOfBits = 16
 		xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
 		if xAccl > 2047:
 			xAccl -= 4096
-		
-        #put register in standbye mode
-        bus.write_byte_data(0x1D, 0x2A, 0) 
-        time.sleep(0.5)
-
-        print(data)
+			'''
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit): 
