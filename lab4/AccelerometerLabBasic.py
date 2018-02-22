@@ -28,20 +28,16 @@ try:
         #status (ignore), MSBx, LSBx, MSBy, LSBy, MSBz, LSBz
         data = bus.read_i2c_block_data(0x1D, 0x00, 7)     
 
-		
         #put register in standbye mode
-        bus.write_byte_data(0x1D, 0x2A, 0) 
-        time.sleep(0.5)
-        
+        bus.write_byte_data(0x1D, 0x2A, 0)
+		time.sleep(0.5)
 		print(data)
-		
 		MSB_x = data[1]
 		LSB_x = data[2]
 		MSB_y = data[3]
 		LSB_y = data[4]
 		MSB_z = data[5]
 		LSB_z = data[6]
-		
 		numberOfBits = 16
 		xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
 		yAccl = (MSB_y * 256 + LSB_y) / numberOfBits
