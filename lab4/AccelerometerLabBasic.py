@@ -35,14 +35,26 @@ try:
 
         print(data)
 		
-		#MSB_x = data[1]
-		#LSB_x = data[2]
-		#numberOfBits = 16
-		#xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
-		#if xAccl > 2047:
-		#	xAccl -= 4096
+		MSB_x = data[1]
+		LSB_x = data[2]
+		MSB_y = data[3]
+		LSB_y = data[4]
+		MSB_z = data[5]
+		LSB_z = data[6]
 		
-
+		numberOfBits = 16
+		xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
+		if xAccl > 2047:
+			xAccl -= 4096
+		yAccl = (MSB_y * 256 + LSB_y) / numberOfBits
+		if yAccl > 2047:
+			yAccl -= 4096	
+		zAccl = (MSB_z * 256 + LSB_z) / numberOfBits
+		if zAccl > 2047:
+			zAccl -= 4096
+			
+			
+			
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit): 
     print("User requested exit... bye!")
