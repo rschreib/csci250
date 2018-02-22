@@ -38,15 +38,14 @@ try:
         xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
         yAccl = (MSB_y * 256 + LSB_y) / numberOfBits
         zAccl = (MSB_z * 256 + LSB_z) / numberOfBits
-	if xAccl > 2047: xAccl -= 4096
-	if yAccl > 2047: yAccl -= 4096
-        if zAccl > 2047: zAccl -= 4096
-	print("x: ",xAccl)
-        print("y: ",yAccel)
-        print("z: ",zAccel)
+		if xAccl > 2047: 
+			xAccl -= 4096
+		if yAccl > 2047: 
+			yAccl -= 4096
+        if zAccl > 2047: 
+			zAccl -= 4096
+		print("x: ",xAccl," y: ",yAccel," z: ",zAccel)
         print(data)
-		
-		
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit): 
     print("User requested exit... bye!")
