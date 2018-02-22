@@ -12,5 +12,5 @@ data = np.loadtxt("data.csv", delimiter=",")
 x = data[0]
 y = data[1]
 
-plt.plot([1,2,3],[1,2,3])
+plt.plot(x,y)
 #plt.show()
