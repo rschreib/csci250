@@ -29,7 +29,7 @@ try:
         bus.write_byte_data(0x1D, 0x2A, 0) 
         time.sleep(0.5)
 
-        #print(data)
+    
 		
 		MSB_x = data[1]
 		LSB_x = data{2]
@@ -53,7 +53,7 @@ try:
 		print("y: ",yAccel)
 		print("z: ",zAccel)
 
-		
+		print(data)
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit): 
     print("User requested exit... bye!")
