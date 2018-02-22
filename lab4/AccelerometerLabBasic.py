@@ -9,9 +9,6 @@ import time
 
 # Get I2C bus - initial bus to channel 1
 bus = smbus.SMBus(1) 
-#class Accelerometer():
-
-
 
 try:
     while True:
@@ -25,14 +22,41 @@ try:
         #Data returned will be an array
         #Contents of 7 bytes read and stored in data array represent:
         #status (ignore), MSBx, LSBx, MSBy, LSBy, MSBz, LSBz
+<<<<<<< HEAD
         data = bus.read_i2c_block_data(0x1D, 0x00, 7)
 		
+=======
+        data = bus.read_i2c_block_data(0x1D, 0x00, 7)     
+>>>>>>> 1e399f27ad8f4efcdeea075056cd43bcae59cda0
         #put register in standbye mode
         bus.write_byte_data(0x1D, 0x2A, 0)
 		time.sleep(0.5)
 		print(data)
+<<<<<<< HEAD
 		
 
+=======
+		MSB_x = data[1]
+		LSB_x = data[2]
+		MSB_y = data[3]
+		LSB_y = data[4]
+		MSB_z = data[5]
+		LSB_z = data[6]
+		numberOfBits = 16
+		xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
+		yAccl = (MSB_y * 256 + LSB_y) / numberOfBits
+		zAccl = (MSB_z * 256 + LSB_z) / numberOfBits
+		if xAccl > 2047:
+			xAccl -= 4096
+		if yAccl > 2047:
+			yAccl -= 4096	
+		if zAccl > 2047:
+			zAccl -= 4096
+		print("x: ",xAccl)
+		print("y: ",yAccel)
+		print("z: ",zAccel)
+			
+>>>>>>> 1e399f27ad8f4efcdeea075056cd43bcae59cda0
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit): 
     print("User requested exit... bye!")
