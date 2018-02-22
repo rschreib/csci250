@@ -28,24 +28,23 @@ try:
         #put register in standbye mode
         bus.write_byte_data(0x1D, 0x2A, 0)
         time.sleep(0.5)
-		MSB_x = data[1]
-		LSB_x = data[2]
-		MSB_y = data[3]
-		LSB_y = data[4]
-		MSB_z = data[5]
-		LSB_z = data[6]
-		numberOfBits = 16
-		xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
-		yAccl = (MSB_y * 256 + LSB_y) / numberOfBits
-		zAccl = (MSB_z * 256 + LSB_z) / numberOfBits
-		if xAccl > 2047: xAccl -= 4096
-		if yAccl > 2047: yAccl -= 4096
-		if zAccl > 2047: zAccl -= 4096
-		print("x: ",xAccl)
-		print("y: ",yAccel)
-		print("z: ",zAccel)
-
-		print(data)
+        MSB_x = data[1]
+        LSB_x = data[2]
+        MSB_y = data[3]
+        LSB_y = data[4]
+        MSB_z = data[5]
+        LSB_z = data[6]
+        numberOfBits = 16
+        xAccl = (MSB_x * 256 + LSB_x) / numberOfBits
+        yAccl = (MSB_y * 256 + LSB_y) / numberOfBits
+        zAccl = (MSB_z * 256 + LSB_z) / numberOfBits
+	if xAccl > 2047: xAccl -= 4096
+	if yAccl > 2047: yAccl -= 4096
+        if zAccl > 2047: zAccl -= 4096
+	print("x: ",xAccl)
+        print("y: ",yAccel)
+        print("z: ",zAccel)
+        print(data)
 		
 		
 #capture the control c and exit cleanly
