@@ -61,6 +61,15 @@ try:
             zAccl -= 4096
         print("x: ",xAccl," y: ",yAccl," z: ",zAccl)
         print(data)
+
+        arr = []
+        arr.append(xAccl)
+        arr.append(yAccl)
+        arr.append(zAccl)
+        for i in range(len(arr)):
+            print('x'+ i -1,arr[i])
+
+        
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit): 
     print("User requested exit... bye!")
