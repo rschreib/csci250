@@ -21,7 +21,7 @@ class Accelerometer:
         print("Acceleration in y is",self.y)
         print("Acceleration in z is",self.z)
     def printCoord(self):
-        print("("+ self.x+", "+self.y+", "+self.z+")")
+        print("({},{},{})".format(self.x,self.y,self.z))
         
 try:
     while True:
