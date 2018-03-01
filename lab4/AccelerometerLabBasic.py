@@ -13,9 +13,9 @@ bus = smbus.SMBus(1)
 
 class Accelerometer:
     def __init__(self, x=0, y=0, z=0):
-        self.x=x
-        self.y=y
-        self.z=z
+        self.x=x-8
+        self.y=y-7
+        self.z=z-999
     def printData(self):
         print("Acceleration in x is",self.x)
         print("Acceleration in y is",self.y)
