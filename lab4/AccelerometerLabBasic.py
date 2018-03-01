@@ -11,9 +11,10 @@ import time
 # Get I2C bus - initial bus to channel 1
 bus = smbus.SMBus(1) 
 
+#Accelerometer class with default values (0,0,0)
 class Accelerometer:
     def __init__(self, x=0, y=0, z=0):
-        self.x=x-8
+        self.x=x-8  #tries to zero out the recorded values while device is not tilted
         self.y=y-7
         self.z=z-999
     def printData(self):
@@ -24,6 +25,7 @@ class Accelerometer:
         print("({},{},{})".format(self.x,self.y,self.z))
         
 try:
+    arr = []
     while True:
         #Parameters for write_byte_data
         #1. Address of the device
@@ -62,7 +64,11 @@ try:
         #print("x: ",xAccl," y: ",yAccl," z: ",zAccl)
         #print(data)
 
+        #created class Acceleromter that stores the x, y, z coordinates
+        #inside the instance point. The instance is then appended to the
+        #array arr. Member functions are then called to print the data
         point = Accelerometer(xAccl,yAccl,zAccl)
+        arr.append(point)
         point.printData()
         point.printCoord()
 
