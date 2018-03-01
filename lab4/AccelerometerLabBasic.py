@@ -62,12 +62,9 @@ try:
         print("x: ",xAccl," y: ",yAccl," z: ",zAccl)
         print(data)
 
-        arr = []
-        arr.append(xAccl)
-        arr.append(yAccl)
-        arr.append(zAccl)
-        for i in range(len(arr)):
-            print('x'+ i -1,arr[i])
+        point = Accelerometer(xAccl,yAccl,zAccl)
+        point.printData()
+        
 
         
 #capture the control c and exit cleanly
