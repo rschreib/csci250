@@ -1,5 +1,6 @@
-#Name: Wendy Fisher (TA: Benjamin Tarman)
+#Name: Robert Schreibman
 #Date: Feb 22, 2018
+#Class: csci250 - Sensors
 #Description: This sample file is for Lab4 - and intended as a bare-bones structure to
 #       work with the I2C and the accelerometer. Once the device is wired and RPi
 #       running, this code should work as is. Students are tasked to modify this
@@ -10,6 +11,18 @@ import time
 # Get I2C bus - initial bus to channel 1
 bus = smbus.SMBus(1) 
 
+class Accelerometer:
+    def __init__(self, x=0, y=0, z=0):
+        self.x=x
+        self.y=y
+        self.z=z
+    def printData(self):
+        print("Acceleration in x is",self.x)
+        print("Acceleration in y is",self.y)
+        print("Acceleration in z is",self.z)
+    def printCoord(self):
+        print("("+self.x+", ",self.y,", ",self.z,")")
+        
 try:
     while True:
         #Parameters for write_byte_data
