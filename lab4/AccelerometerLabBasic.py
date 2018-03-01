@@ -59,12 +59,12 @@ try:
             yAccl -= 4096
         if zAccl > 2047:
             zAccl -= 4096
-        print("x: ",xAccl," y: ",yAccl," z: ",zAccl)
-        print(data)
+        #print("x: ",xAccl," y: ",yAccl," z: ",zAccl)
+        #print(data)
 
         point = Accelerometer(xAccl,yAccl,zAccl)
         point.printData()
-        
+        point.printCoord()
 
         
 #capture the control c and exit cleanly
