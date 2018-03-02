@@ -29,14 +29,7 @@ class Accelerometer:
             myString += arr[i] + ' '
         myString += ")"
         return myString
-'''
     def __repr__(self):
-        myString = ""
-        for i in range(len(arr)):
-            myString += arr[i] + ","
-        return myString
-'''
-    def __str__(self):
         return "({},{},{})".format(self.x,self.y,self.z)
     
 try:
