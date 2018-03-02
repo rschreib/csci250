@@ -81,7 +81,7 @@ try:
         arr.append(point)
         point.printData()
         point.printCoord()
-        print point
+        print(point)
 
         
 #capture the control c and exit cleanly
