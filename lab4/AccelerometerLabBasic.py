@@ -26,7 +26,7 @@ class Accelerometer:
     def myPrint(self,arr):
         myString = ""
         for i in range(len(arr)):
-            myString += arr[i]
+            myString += arr[i] + ','
         return myString
 '''
     def __repr__(self):
