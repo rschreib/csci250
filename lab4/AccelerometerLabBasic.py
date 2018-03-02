@@ -24,22 +24,21 @@ class Accelerometer:
     def printCoord(self):
         print("({},{},{})".format(self.x,self.y,self.z))
     def myPrint(self,arr):
-        myString = ""
+        myString = "( "
         for i in range(len(arr)):
-            myString += arr[i] + ','
+            myString += arr[i] + ' '
+        myString += ")"
         return myString
 '''
     def __repr__(self):
-        myString = "("
+        myString = ""
         for i in range(len(arr)):
             myString += arr[i] + ","
         return myString
+'''
     def __str__(self):
-        myString = "("
-        for i in range(len(arr)):
-            myString += arr[i] + ","
-        return myString
-'''    
+        return "({},{},{})".format(self.x,self.y,self.z)
+    
 try:
     arr = []
     while True:
