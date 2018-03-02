@@ -23,7 +23,13 @@ class Accelerometer:
         print("Acceleration in z is",self.z)
     def printCoord(self):
         print("({},{},{})".format(self.x,self.y,self.z))
-        
+	#def myPrint(self,arr)
+	#	myString = ""
+	#	for i in range(len(arr)):
+	#		myString += arr[i]
+    #   return myString
+
+
 try:
     arr = []
     while True:
