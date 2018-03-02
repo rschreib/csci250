@@ -33,6 +33,11 @@ class Accelerometer:
         for i in range(len(arr)):
             myString += arr[i] + ","
         return myString
+    def __str__(self):
+        myString = "("
+        for i in range(len(arr)):
+            myString += arr[i] + ","
+        return myString
     
 try:
     arr = []
