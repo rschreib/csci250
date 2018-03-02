@@ -17,6 +17,14 @@ class Accelerometer:
     x_cal = 0
     y_cal = 0
     z_cal = 0
+    def calibrateNumbers(self):
+        if (self.calibrated == False):
+            x_cal = self.x
+            y_cal = self.y
+            z_cal = self.z
+            self.calibrated = True
+        else:
+            pass
     def __init__(self, x=0, y=0, z=0):
         self.x=x-8 - self.x_cal  #tries to zero out the recorded values while device is not tilted
         self.y=y-7 - self.y_cal
@@ -36,14 +44,7 @@ class Accelerometer:
         return(myString)
     def __repr__(self):
         return "({},{},{})".format(self.x,self.y,self.z)
-    def calibrateNumbers(self):
-        if (self.calibrated == False):
-            x_cal = self.x
-            y_cal = self.y
-            z_cal = self.z
-            self.calibrated = True
-        else:
-            pass
+
     
 try:
     arr = []
