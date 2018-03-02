@@ -87,7 +87,7 @@ try:
         arr.append(point)
         point.printData()
         point.printCoord()
-        point.myPrint([4,5,6,7,8,9])
+        point.myPrint(['4','5','6','7','8','9'])
         print(point)
 
         
