@@ -29,7 +29,7 @@ class Accelerometer:
         self.x=x-8 - self.x_cal  #tries to zero out the recorded values while device is not tilted
         self.y=y-7 - self.y_cal
         self.z=z-999 - self.z_cal
-        self.calibrateNumbers(self)
+        self.calibrateNumbers()
     def printData(self):
         print("Acceleration in x is",self.x)
         print("Acceleration in y is",self.y)
