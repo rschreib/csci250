@@ -28,6 +28,7 @@ class Accelerometer:
         for i in range(len(arr)):
             myString += arr[i]
         return myString
+'''
     def __repr__(self):
         myString = "("
         for i in range(len(arr)):
@@ -38,7 +39,7 @@ class Accelerometer:
         for i in range(len(arr)):
             myString += arr[i] + ","
         return myString
-    
+'''    
 try:
     arr = []
     while True:
