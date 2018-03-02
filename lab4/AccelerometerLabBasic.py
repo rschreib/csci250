@@ -13,10 +13,15 @@ bus = smbus.SMBus(1)
 
 #Accelerometer class with default values (0,0,0)
 class Accelerometer:
+    calibrated = False
+    x_cal = 0
+    y_cal = 0
+    z_cal = 0
     def __init__(self, x=0, y=0, z=0):
-        self.x=x-8  #tries to zero out the recorded values while device is not tilted
-        self.y=y-7
-        self.z=z-999
+        self.x=x-8 - self.x_cal  #tries to zero out the recorded values while device is not tilted
+        self.y=y-7 - self.y_cal
+        self.z=z-999 - self.z_cal
+        calibrateNumbers(self)
     def printData(self):
         print("Acceleration in x is",self.x)
         print("Acceleration in y is",self.y)
@@ -28,9 +33,17 @@ class Accelerometer:
         for i in range(len(arr)):
             myString += arr[i] + ' '
         myString += ")"
-        return myString
+        return(myString)
     def __repr__(self):
         return "({},{},{})".format(self.x,self.y,self.z)
+    def calibrateNumbers(self):
+        if (self.calibrated == False):
+            x_cal = self.x
+            y_cal = self.y
+            z_cal = self.z
+            self.calibrated = True
+        else:
+            pass
     
 try:
     arr = []
@@ -79,7 +92,7 @@ try:
         arr.append(point)
         point.printData()
         point.printCoord()
-        print(point.myPrint(['4','5','6','7','8','9']))
+        #print(point.myPrint(['4','5','6','7','8','9']))
         print(point)
 
         
