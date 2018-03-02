@@ -23,13 +23,17 @@ class Accelerometer:
         print("Acceleration in z is",self.z)
     def printCoord(self):
         print("({},{},{})".format(self.x,self.y,self.z))
-	#def myPrint(self,arr)
-	#	myString = ""
-	#	for i in range(len(arr)):
-	#		myString += arr[i]
-    #   return myString
-
-
+    def myPrint(self,arr):
+        myString = ""
+        for i in range(len(arr)):
+            myString += arr[i]
+        return myString
+    def __repr__(self):
+        myString = "("
+        for i in range(len(arr)):
+            myString += arr[i] + ","
+        return myString
+    
 try:
     arr = []
     while True:
@@ -77,6 +81,7 @@ try:
         arr.append(point)
         point.printData()
         point.printCoord()
+        print point
 
         
 #capture the control c and exit cleanly
