@@ -35,7 +35,7 @@ class Accelerometer:
         self.x=x - self.x_offset  #tries to zero out the recorded values while device is not tilted
         self.y=y - self.y_offset
         self.z=z - self.z_offset
-        #self.calibrateNumbers()
+        self.calibrateNumbers()
     def printData(self):
         print("Acceleration in x is",self.x)
         print("Acceleration in y is",self.y)
@@ -49,6 +49,7 @@ class Accelerometer:
         myString += ")"
         return(myString)
     def __repr__(self):
+        print(self.x_offset," ",self.y_offset," ",self.z_offset,"fuck")
         return "({},{},{})".format(self.x,self.y,self.z)
 
     
