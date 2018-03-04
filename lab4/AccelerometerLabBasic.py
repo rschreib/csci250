@@ -20,15 +20,15 @@ class Accelerometer:
         x_avg = sum(self.x_vals) / float(len(self.x_vals))
         y_avg = sum(self.y_vals) / float(len(self.y_vals))
         z_avg = sum(self.z_vals) / float(len(self.z_vals))
-        print(x_avg,y_avg,z_avg, "money")
-        self.x_offset,self.y_offset,self.z_offset = x_avg,y_avg,z_avg
+        #print(x_avg,y_avg,z_avg, "money")
+        #self.x_offset,self.y_offset,self.z_offset = x_avg,y_avg,z_avg
         return x_avg,y_avg,z_avg
         
     def __init__(self, x=0, y=0, z=0):
         self.x_vals.append(x)
         self.y_vals.append(y)
         self.z_vals.append(z)
-        x_offset,y_offset,z_offset = self.average()
+        self.x_offset,self.y_offset,self.z_offset = self.average()
         self.x=x - self.x_offset  #tries to zero out the recorded values while device is not tilted
         self.y=y - self.y_offset
         self.z=z - self.z_offset
