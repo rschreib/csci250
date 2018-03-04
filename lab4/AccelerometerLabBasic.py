@@ -13,18 +13,25 @@ bus = smbus.SMBus(1)
 
 #Accelerometer class with default values (0,0,0)
 class Accelerometer:
-    calibrated = False
-    x_cal = 0
-    y_cal = 0
-    z_cal = 0
+    calibrated = 2
+    x_cal = [0,0,0]
+    y_cal = [0,0,0]
+    z_cal = [0,0,0]
+    x_offset,y_offset,z_offset = 0,0,0
+    def average(self):
+        global x_cal,y_cal,z_cal
+        x_avg = sum(x_cal) / float(len(x_cal))
+        y_avg = sum(y_cal) / float(len(y_cal))
+        z_avg = sum(z_cal) / float(len(z_cal))
+        return x_avg,y_avg,z_avg
     def calibrateNumbers(self):
-        if (self.calibrated == False):
-            x_cal = self.x
-            y_cal = self.y
-            z_cal = self.z
-            self.calibrated = True
+        if (self.calibrated == -1:
+            x_offset,y_offset,z_offset = average(self)
         else:
-            pass
+            global x_cal[2-calibrated] = self.x
+            global y_cal[2-calibrated] = self.y
+            global z_cal[2-calibrated] = self.z
+            self.calibrated -= 1
     def __init__(self, x=0, y=0, z=0):
         self.x=x-8 - self.x_cal  #tries to zero out the recorded values while device is not tilted
         self.y=y-7 - self.y_cal
