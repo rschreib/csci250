@@ -30,7 +30,7 @@ class Accelerometer:
         self.x_vals.append(self.x)
         self.y_vals.append(self.y)
         self.z_vals.append(self.z)
-        self.calibrateNumbers()
+        self.calibrateNumbers(self)
     def printData(self):
         print("Acceleration in x is",self.x)
         print("Acceleration in y is",self.y)
