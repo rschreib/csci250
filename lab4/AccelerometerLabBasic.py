@@ -45,9 +45,9 @@ class Accelerometer:
             self.x_offset,self.y_offset,self.z_offset = self.average()
             self.calibrationSamples -= 1
         '''
-        self.x = x - self.x_offset  #tries to zero out the recorded values while device is not tilted
-        self.y = y - self.y_offset
-        self.z = z - self.z_offset
+        self.x = x - self.x_offset  -20 #tries to zero out the recorded values while device is not tilted
+        self.y = y - self.y_offset -10
+        self.z = z - self.z_offset -1000
     def printData(self):
         print("Acceleration in x is",self.x)
         print("Acceleration in y is",self.y)
