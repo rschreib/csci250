@@ -13,10 +13,9 @@
 
 
 import smbus 
-import time
+from time import sleep
 import RPi.GPIO as GPIO
 import math
-import time.sleep as sleep
 
 pin19 = 19
 GPIO.setmode(GPIO.BCM)     
