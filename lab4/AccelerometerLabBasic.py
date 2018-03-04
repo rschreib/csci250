@@ -23,6 +23,7 @@ class Accelerometer:
         return int(x_avg),int(y_avg),int(z_avg)
     def __init__(self, x=0, y=0, z=0):
         for i in range(self.calibrationSamples):
+            print(i)
             self.x_vals.append(x)
             self.y_vals.append(y)
             self.z_vals.append(z)
