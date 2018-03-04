@@ -22,7 +22,7 @@ class Accelerometer:
         z_avg = sum(self.z_vals) / float(len(self.z_vals))
         #print(x_avg,y_avg,z_avg, "money")
         #self.x_offset,self.y_offset,self.z_offset = x_avg,y_avg,z_avg
-        return x_avg,y_avg,z_avg
+        return int(x_avg),int(y_avg),int(z_avg)
         
     def __init__(self, x=0, y=0, z=0):
         self.x_vals.append(x)
