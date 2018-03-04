@@ -5,8 +5,21 @@
 #       work with the I2C and the accelerometer. Once the device is wired and RPi
 #       running, this code should work as is. Students are tasked to modify this
 #       code to an object-oriented solution for credit.
+
+#Extra Credit:
+#1) Created 2 methods that converts an array of objects to a string: __repr__ & myPrint(arr)
+#2) Added method average(self): this averages the first 3 recorded x,y,z values for calibration
+#4) Added some LEDs. 
+
+
 import smbus 
 import time
+import RPi.GPIO as GPIO
+import math
+
+pin19 = 19
+GPIO.setmode(GPIO.BCM)     
+GPIO.setup(pin19,GPIO.OUT)
 
 # Get I2C bus - initial bus to channel 1
 bus = smbus.SMBus(1) 
@@ -48,7 +61,24 @@ class Accelerometer:
             print(i)
         return "({},{},{})".format(self.x,self.y,self.z)
 
-    
+
+def pulse(sleepTime):
+    GPIO.output(pin19,True)
+    sleep(sleepTime)
+    GPIO.output(pin19,False)
+    sleep(sleepTime)
+
+def pulse_rate(x,y,z):
+    magnitude = math.sqrt(x*x + y*y + z*z)
+    if (magnitude > 50):
+        pulse(0.5)
+    elif (magnitude > 100):
+        pulse(0.3)
+    elif (magnitude > 200):
+        pulse(0.15)
+    elif (magnitude > 400):
+        pulse(0.05)
+
 try:
     arr = []
     while True:
@@ -96,8 +126,8 @@ try:
         arr.append(point)
         point.printData()
         point.printCoord()
-        #print(point.myPrint(['4','5','6','7','8','9']))
         print(point)
+        pulse_rate(point.x,point.y,point.z)
 
         
 #capture the control c and exit cleanly
