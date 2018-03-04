@@ -24,14 +24,17 @@ class Accelerometer:
         z_avg = sum(self.z_cal) / float(len(self.z_cal))
         return x_avg,y_avg,z_avg
     def calibrateNumbers(self):
-        if (self.calibrated < 0):
+        if (self.calibrated == -1):
             x_offset,y_offset,z_offset = average(self)
             
-        else:
+        elif (self.calibrated >= 0):
             self.x_cal[2-self.calibrated] = self.x
             self.y_cal[2-self.calibrated] = self.y
             self.z_cal[2-self.calibrated] = self.z
             self.calibrated -= 1
+        else:
+            pass
+        
     def __init__(self, x=0, y=0, z=0):
         self.x=x - self.x_offset  #tries to zero out the recorded values while device is not tilted
         self.y=y - self.y_offset
