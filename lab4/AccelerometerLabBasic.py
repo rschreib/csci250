@@ -35,7 +35,7 @@ class Accelerometer:
         self.x=x - self.x_offset  #tries to zero out the recorded values while device is not tilted
         self.y=y - self.y_offset
         self.z=z - self.z_offset
-        self.calibrateNumbers()
+        #self.calibrateNumbers()
     def printData(self):
         print("Acceleration in x is",self.x)
         print("Acceleration in y is",self.y)
@@ -96,6 +96,7 @@ try:
         #inside the instance point. The instance is then appended to the
         #array arr. Member functions are then called to print the data
         point = Accelerometer(xAccl,yAccl,zAccl)
+        point.calibrateNumbers()
         arr.append(point)
         point.printData()
         point.printCoord()
