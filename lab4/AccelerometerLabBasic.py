@@ -77,6 +77,8 @@ def pulse_rate(x,y,z):
         pulse(0.4)
     elif (magnitude > 300):
         pulse(0.1)
+    else:
+        pass
 
 try:
     arr = []
