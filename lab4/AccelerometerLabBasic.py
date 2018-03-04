@@ -28,9 +28,10 @@ class Accelerometer:
         if (self.calibrated == -1):
             x_offset,y_offset,z_offset = average(self)
         else:
-            global x_cal[2-self.calibrated] = self.x
-            global y_cal[2-self.calibrated] = self.y
-            global z_cal[2-self.calibrated] = self.z
+            global x_cal,y_cal,z_cal
+            x_cal[2-self.calibrated] = self.x
+            y_cal[2-self.calibrated] = self.y
+            z_cal[2-self.calibrated] = self.z
             self.calibrated -= 1
     def __init__(self, x=0, y=0, z=0):
         self.x=x-8 - self.x_cal  #tries to zero out the recorded values while device is not tilted
