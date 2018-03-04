@@ -50,6 +50,7 @@ class Accelerometer:
         return(myString)
     def __repr__(self):
         print(self.x_offset," ",self.y_offset," ",self.z_offset,"fuck")
+        print(self.x_cal[0]," ",self.y_cal[0]," ",self.z_cal[0],"damn")
         return "({},{},{})".format(self.x,self.y,self.z)
 
     
