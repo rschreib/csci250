@@ -25,7 +25,7 @@ class Accelerometer:
         self.x_vals.append(self.x)
         self.y_vals.append(self.y)
         self.z_vals.append(self.z)
-        x_offset,y_offset,z_offset = average(self)
+        x_offset,y_offset,z_offset = self.average()
     def __init__(self, x=0, y=0, z=0):
         self.x=x - self.x_offset  #tries to zero out the recorded values while device is not tilted
         self.y=y - self.y_offset
