@@ -74,7 +74,7 @@ def pulse(sleepTime):
     sleep(sleepTime)
 
 def pulse_rate(x,y,z):
-    magnitude = math.abs(math.sqrt(x*x + y*y + z*z))
+    magnitude = abs(math.sqrt(x*x + y*y + z*z))
     if (magnitude > 100):
         pulse(0.1)
     elif (magnitude > 300):
