@@ -9,7 +9,7 @@
 #Extra Credit:
 #1) Created 2 methods that converts an array of objects to a string: __repr__ & myPrint(arr)
 #2) Added method average(self): this averages the first 3 recorded x,y,z values for calibration
-#4) Added some LEDs. 
+#4) Added some LEDs. The turn on when they blink depending on tilt 
 
 
 import smbus
@@ -35,16 +35,13 @@ class Accelerometer:
         y_avg = sum(self.y_vals) / float(len(self.y_vals))
         z_avg = sum(self.z_vals) / float(len(self.z_vals))
         return int(x_avg),int(y_avg),int(z_avg)
-    def __init__(self, x=0, y=0, z=0):
-        #for i in range(self.calibrationSamples):
-        
+    def __init__(self, x=0, y=0, z=0):        
         if (self.calibrationSamples >= 0):
             self.x_vals.append(x)
             self.y_vals.append(y)
             self.z_vals.append(z)
             self.x_offset,self.y_offset,self.z_offset = self.average()
             self.calibrationSamples -= 1
-        
         self.x = x - self.x_offset #tries to zero out the recorded values while device is not tilted
         self.y = y - self.y_offset
         self.z = z - self.z_offset 
