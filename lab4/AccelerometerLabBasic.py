@@ -13,28 +13,19 @@ bus = smbus.SMBus(1)
 
 #Accelerometer class with default values (0,0,0)
 class Accelerometer:
-    calibrated = 2
-    x_cal = [0,0,0]
-    y_cal = [0,0,0]
-    z_cal = [0,0,0]
+    sampleNum = 3
+    x_vals,y_vals,z_vals = [],[],[]
     x_offset,y_offset,z_offset = 0,0,0
     def average(self):
-        x_avg = sum(self.x_cal) / float(len(self.x_cal))
-        y_avg = sum(self.y_cal) / float(len(self.y_cal))
-        z_avg = sum(self.z_cal) / float(len(self.z_cal))
+        x_avg = sum(self.x_vals) / float(len(self.x_vals))
+        y_avg = sum(self.y_vals) / float(len(self.y_vals))
+        z_avg = sum(self.z_vals) / float(len(self.z_vals))
         return x_avg,y_avg,z_avg
     def calibrateNumbers(self):
-        if (self.calibrated == -1):
-            x_offset,y_offset,z_offset = average(self)
-            
-        elif (self.calibrated >= 0):
-            self.x_cal[2-self.calibrated] = self.x
-            self.y_cal[2-self.calibrated] = self.y
-            self.z_cal[2-self.calibrated] = self.z
-            self.calibrated -= 1
-        else:
-            pass
-        
+        self.x_vals.append(self.x)
+        self.y_vals.append(self.y)
+        self.z_vals.append(self.z)
+        x_offset,y_offset,z_offset = average(self)
     def __init__(self, x=0, y=0, z=0):
         self.x=x - self.x_offset  #tries to zero out the recorded values while device is not tilted
         self.y=y - self.y_offset
@@ -102,7 +93,6 @@ try:
         #inside the instance point. The instance is then appended to the
         #array arr. Member functions are then called to print the data
         point = Accelerometer(xAccl,yAccl,zAccl)
-        point.calibrateNumbers()
         arr.append(point)
         point.printData()
         point.printCoord()
