@@ -21,8 +21,7 @@ class Accelerometer:
         y_avg = sum(self.y_vals) / float(len(self.y_vals))
         z_avg = sum(self.z_vals) / float(len(self.z_vals))
         return x_avg,y_avg,z_avg
-    def calibrateNumbers(self):
-        x_offset,y_offset,z_offset = self.average()
+        
     def __init__(self, x=0, y=0, z=0):
         self.x=x - self.x_offset  #tries to zero out the recorded values while device is not tilted
         self.y=y - self.y_offset
@@ -30,7 +29,7 @@ class Accelerometer:
         self.x_vals.append(self.x)
         self.y_vals.append(self.y)
         self.z_vals.append(self.z)
-        self.calibrateNumbers(self)
+        x_offset,y_offset,z_offset = self.average()
     def printData(self):
         print("Acceleration in x is",self.x)
         print("Acceleration in y is",self.y)
