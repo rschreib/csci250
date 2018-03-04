@@ -34,9 +34,9 @@ class Accelerometer:
             z_cal[2-self.calibrated] = self.z
             self.calibrated -= 1
     def __init__(self, x=0, y=0, z=0):
-        self.x=x-8 - self.x_cal  #tries to zero out the recorded values while device is not tilted
-        self.y=y-7 - self.y_cal
-        self.z=z-999 - self.z_cal
+        self.x=x-8 - self.x_offset  #tries to zero out the recorded values while device is not tilted
+        self.y=y-7 - self.y_offset
+        self.z=z-999 - self.z_offset
         self.calibrateNumbers()
     def printData(self):
         print("Acceleration in x is",self.x)
