@@ -19,10 +19,9 @@ class Accelerometer:
     z_cal = [0,0,0]
     x_offset,y_offset,z_offset = 0,0,0
     def average(self):
-        global x_cal,y_cal,z_cal
-        x_avg = sum(x_cal) / float(len(x_cal))
-        y_avg = sum(y_cal) / float(len(y_cal))
-        z_avg = sum(z_cal) / float(len(z_cal))
+        x_avg = sum(self.x_cal) / float(len(self.x_cal))
+        y_avg = sum(self.y_cal) / float(len(self.y_cal))
+        z_avg = sum(self.z_cal) / float(len(self.z_cal))
         return x_avg,y_avg,z_avg
     def calibrateNumbers(self):
         if (self.calibrated == -1):
