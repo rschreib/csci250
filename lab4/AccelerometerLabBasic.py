@@ -23,7 +23,6 @@ class Accelerometer:
         return int(x_avg),int(y_avg),int(z_avg)
     def __init__(self, x=0, y=0, z=0):
         for i in range(self.calibrationSamples):
-            print(i)
             self.x_vals.append(x)
             self.y_vals.append(y)
             self.z_vals.append(z)
@@ -44,7 +43,7 @@ class Accelerometer:
         myString += ")"
         return(myString)
     def __repr__(self):
-        print(self.x_offset," ",self.y_offset," ",self.z_offset,"fuckoffset")
+        #print(self.x_offset," ",self.y_offset," ",self.z_offset,"fuckoffset")
         for i in self.x_vals:
             print(i)
         return "({},{},{})".format(self.x,self.y,self.z)
