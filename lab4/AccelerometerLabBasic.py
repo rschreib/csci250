@@ -73,14 +73,10 @@ def pulse(sleepTime):
 
 def pulse_rate(x,y,z):
     magnitude = math.sqrt(x*x + y*y + z*z)
-    if (magnitude > 50):
-        pulse(0.5)
     elif (magnitude > 100):
-        pulse(0.3)
-    elif (magnitude > 200):
-        pulse(0.15)
-    elif (magnitude > 400):
-        pulse(0.05)
+        pulse(0.4)
+    elif (magnitude > 300):
+        pulse(0.1)
 
 try:
     arr = []
