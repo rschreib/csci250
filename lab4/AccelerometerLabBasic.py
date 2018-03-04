@@ -37,12 +37,12 @@ class Accelerometer:
         return int(x_avg),int(y_avg),int(z_avg)
     def __init__(self, x=0, y=0, z=0):
         #for i in range(self.calibrationSamples):
-        if (calibrationSamples >= 0):
+        if (self.calibrationSamples >= 0):
             self.x_vals.append(x)
             self.y_vals.append(y)
             self.z_vals.append(z)
             self.x_offset,self.y_offset,self.z_offset = self.average()
-            calibrationSamples -= 1
+            self.calibrationSamples -= 1
         self.x = x - self.x_offset  #tries to zero out the recorded values while device is not tilted
         self.y = y - self.y_offset
         self.z = z - self.z_offset
