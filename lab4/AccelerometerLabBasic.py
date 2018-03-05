@@ -9,7 +9,8 @@
 #Extra Credit:
 #1) Created 2 methods that converts an array of objects to a string: __repr__ & myPrint(arr)
 #2) Added method average(self): this averages the first 3 recorded x,y,z values for calibration
-#4) Added some LEDs. The turn on when they blink depending on tilt 
+#4) Added some LEDs. The LEDs turn on when tilted in the Y-direction and will blink when tilted
+#   in the X-direction.
 
 
 import smbus
@@ -29,10 +30,10 @@ bus = smbus.SMBus(1)
 
 #Accelerometer class with default values (0,0,0)
 class Accelerometer:
-    calibrationSamples = 3
-    x_vals,y_vals,z_vals = [],[],[]
-    x_offset,y_offset,z_offset = 0,0,0
-    def average(self):
+    calibrationSamples = 3          #Have device sit stationary in neutral position for it to collect 3 samples to use for calibration
+    x_vals,y_vals,z_vals = [],[],[] #the lists that will hold the samples
+    x_offset,y_offset,z_offset = 0,0,0 #the average offset calibration value that will be used
+    def average(self):  #gets the average values from the lists used for calibration
         x_avg = sum(self.x_vals) / float(len(self.x_vals))
         y_avg = sum(self.y_vals) / float(len(self.y_vals))
         z_avg = sum(self.z_vals) / float(len(self.z_vals))
@@ -90,8 +91,8 @@ def LEDs_OFF(sleepTime):
     GPIO.output(pin20,False)
     sleep(sleepTime)
 
-def pulse_rate(x,y,z):
-    #magnitude = abs(math.sqrt(x*x + y*y + z*z))
+#different LED function will be called based on orientation
+def display_LEDs_based_on_orientation(x,y,z):
     xtilted = abs(x)
     ytilted = abs(y)
     if (xtilted > 350):
@@ -149,7 +150,7 @@ try:
         point.printData()
         point.printCoord()
         print(point)
-        pulse_rate(point.x,point.y,point.z)
+        display_LEDs_based_on_orientation(point.x,point.y,point.z)
 
         
 #capture the control c and exit cleanly
