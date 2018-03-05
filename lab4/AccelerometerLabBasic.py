@@ -79,11 +79,13 @@ def pulse(sleepTime):
     GPIO.output(pin19,False)
     GPIO.output(pin20,True)
     sleep(sleepTime)
+    GPIO.output(pin19,False)
+    GPIO.output(pin20,False)
 
 def pulse_rate(x,y,z):
     magnitude = abs(math.sqrt(x*x + y*y + z*z))
     if (magnitude > 300):
-        pulse(0.01)
+        pulse(0.05)
     else:
         pass
 
