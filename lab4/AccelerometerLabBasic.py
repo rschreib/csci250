@@ -81,13 +81,25 @@ def pulse(sleepTime):
     sleep(sleepTime)
     GPIO.output(pin19,False)
     GPIO.output(pin20,False)
+def LEDs_ON(sleepTime):
+    GPIO.output(pin19,True)
+    GPIO.output(pin20,True)
+    sleep(sleepTime)
+def LEDs_OFF(sleepTime)
+    GPIO.output(pin19,False)
+    GPIO.output(pin20,False)
+    sleep(sleepTime)
 
 def pulse_rate(x,y,z):
-    magnitude = abs(math.sqrt(x*x + y*y + z*z))
-    if (magnitude > 300):
+    #magnitude = abs(math.sqrt(x*x + y*y + z*z))
+    xtilted = abs(x)
+    ytilted = abs(y)
+    if (xtilted > 300):
         pulse(0.05)
+    elif (ytilted > 300):
+        LEDs_ON(0.1)        
     else:
-        pass
+        LEDs_OFF(0.1)
 
 try:
     arr = []
