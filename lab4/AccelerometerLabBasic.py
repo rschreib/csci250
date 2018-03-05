@@ -19,8 +19,10 @@ import RPi.GPIO as GPIO
 import math
 
 pin19 = 19
+pin20 = 20
 GPIO.setmode(GPIO.BCM)     
 GPIO.setup(pin19,GPIO.OUT)
+GPIO.setup(pin20,GPIO.OUT)
 
 # Get I2C bus - initial bus to channel 1
 bus = smbus.SMBus(1) 
@@ -66,8 +68,10 @@ class Accelerometer:
 
 def pulse(sleepTime):
     GPIO.output(pin19,True)
+    GPIO.output(pin20,False)
     sleep(sleepTime)
     GPIO.output(pin19,False)
+    GPIO.output(pin20,True)
     sleep(sleepTime)
 
 def pulse_rate(x,y,z):
