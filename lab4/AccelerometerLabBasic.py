@@ -94,9 +94,9 @@ def pulse_rate(x,y,z):
     #magnitude = abs(math.sqrt(x*x + y*y + z*z))
     xtilted = abs(x)
     ytilted = abs(y)
-    if (xtilted > 300):
+    if (xtilted > 350):
         pulse(0.05)
-    elif (ytilted > 300):
+    elif (ytilted > 400):
         LEDs_ON(0.1)        
     else:
         LEDs_OFF(0.1)
