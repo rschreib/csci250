@@ -85,7 +85,7 @@ def LEDs_ON(sleepTime):
     GPIO.output(pin19,True)
     GPIO.output(pin20,True)
     sleep(sleepTime)
-def LEDs_OFF(sleepTime)
+def LEDs_OFF(sleepTime):
     GPIO.output(pin19,False)
     GPIO.output(pin20,False)
     sleep(sleepTime)
