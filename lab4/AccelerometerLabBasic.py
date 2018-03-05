@@ -1,5 +1,5 @@
 #Name: Robert Schreibman
-#Date: Feb 22, 2018
+#Date: March 5, 2018
 #Class: csci250 - Sensors
 #Description: This sample file is for Lab4 - and intended as a bare-bones structure to
 #       work with the I2C and the accelerometer. Once the device is wired and RPi
