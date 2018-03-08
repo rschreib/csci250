@@ -31,7 +31,8 @@ try:
    while True:
       #capture and print the input from the reed switch using GPIO.input
       readSensor = GPIO.input(sensor)
-      print(GPIO.input)
+      print(radSensor)
+      sleep(.5)
 
       #if the captured input is 1, then pull a LED high (True)
 
