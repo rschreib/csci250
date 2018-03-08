@@ -1,6 +1,6 @@
 #Author: Robert Schreibman
 #Date: 3/8/18
-#Description: 
+#Description: Magnetic Sensor
 
 #import the GPIO and time libraries
 import RPi.GPIO as GPIO
