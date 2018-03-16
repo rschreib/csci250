@@ -12,7 +12,7 @@ class Speedometer():
        self.elapsedTime = time.time() - self.startTime
       self.speedMPS = 2*3.14159*radius_cm / self.elapsedTime
    def __init__(self):
-      self.elapsedTime = 0
+      self.elapsedTime = 1.0
       self.startTime = time.time()
       self.speedMPS = 0
       self.totalDistance = 0
