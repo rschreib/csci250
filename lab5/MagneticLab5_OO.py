@@ -60,16 +60,16 @@ try:
     while True:
       #capture and print the input from the reed switch using GPIO.input
       # readSensor = GPIO.input(sensor)
-        speedometer.calculateSpeed(2)
+        # speedometer.calculateSpeed(2)
         # print(speedometer)
-
+        speedometer(sensor)
         speedometer.printData()
         print(readSensor)
         if (readSensor == 0):
             GPIO.output(LED, False)
         else:
             GPIO.output(LED, True)
-            speedometer(sensor)
+
             sleep(.5)
 
       #if the captured input is 1, then pull a LED high (True)
