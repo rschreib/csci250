@@ -60,7 +60,7 @@ try:
     while True:
       #capture and print the input from the reed switch using GPIO.input
       # readSensor = GPIO.input(sensor)
-        speedometer.calculateSpeed()
+        speedometer.calculateSpeed(2)
         print(speedometer)
         print(readSensor)
         if (readSensor == 0):
