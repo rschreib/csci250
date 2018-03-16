@@ -31,8 +31,6 @@ class Speedometer():
    def __repr__(self):
       self.printData()
 
-
-
 #setup two variables to hold the values for the pin numbers
 #(one for LED and one for reed switch)
 sensor = 20 #pin20
@@ -71,7 +69,7 @@ try:
             GPIO.output(LED, False)
         else:
             GPIO.output(LED, True)
-            speedometer()
+            speedometer(sensor)
             sleep(.5)
 
       #if the captured input is 1, then pull a LED high (True)
