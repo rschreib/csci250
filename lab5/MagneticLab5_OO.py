@@ -13,9 +13,9 @@ class Speedometer():
    def __init__(self):
       self.elapsedTime = elapsedTime
       self.startTime = time.time()
+      self.speedMPS = 0
       self.totalDistance = 0
       self.pulseCount = 0
-      self.speedMPS = 0    
    def __call__(self,channel):
       self.pulseCount += 1
       calculateSpeed(radius_cm)
@@ -27,7 +27,7 @@ class Speedometer():
       print("SpeedMPS:",self.speedMPS)
    def __repr__(self):
       self.printData()
-     
+
 
 
 #setup two variables to hold the values for the pin numbers
@@ -35,7 +35,7 @@ class Speedometer():
 sensor = 20 #pin20
 LED = 21 #pin21
 
-#setup the pin mode for the GPIO 
+#setup the pin mode for the GPIO
 GPIO.setmode(GPIO.BCM)
 
 
@@ -49,17 +49,24 @@ GPIO.setup(sensor, GPIO.IN, GPIO.PUD_DOWN)
 #setup the LED as an output pin
 GPIO.setup(LED, GPIO.OUT)
 
+def my_callback(channel):
+    print("led")
 #area for the logic to detect high/low from reed switch and light LED
 try:
-   while True:
+    speedometer = Speedometer()
+    readSensor = GPIO.add_event_detect(sensor,GPIO.FALLING,callback=my_callback, bouncetime = 25)
+    GPIO.add_event_callback(sensor, my_callback)
+    while True:
       #capture and print the input from the reed switch using GPIO.input
-      readSensor = GPIO.input(sensor)
-      print(readSensor)
-      if (readSensor == 0):
-         GPIO.output(LED, False)
-      else:
-         GPIO.output(LED, True)
-      sleep(.5)
+      # readSensor = GPIO.input(sensor)
+        print(readSensor)
+        if (readSensor == 0):
+            GPIO.output(LED, False)
+            print("no")
+        else:
+            GPIO.output(LED, True)
+
+            sleep(.5)
 
       #if the captured input is 1, then pull a LED high (True)
 
@@ -69,11 +76,8 @@ try:
 
       #sleep for a bit, just to slow things down, how long is up to you
 
-         
+
 #capture the control c and exit cleanly
-except(KeyboardInterrupt, SystemExit): 
+except(KeyboardInterrupt, SystemExit):
    print("User requested exit... bye!")
    GPIO.cleanup()
-
-
-
