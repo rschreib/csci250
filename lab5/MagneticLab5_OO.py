@@ -19,7 +19,9 @@ class Speedometer():
       self.pulseCount = 0
    def __call__(self,channel):
       self.pulseCount += 1
-      # calculateSpeed(radius_cm)
+      # self.elapsedTime = time.time() - self.startTime
+      self.calculateSpeed(2)
+      self.totalDistance = self.speedMPS*self.elapsedTime
    def printData(self):
       print("Elapsed Time:",self.elapsedTime)
       print("Start Time:",self.startTime)
@@ -38,7 +40,6 @@ LED = 21 #pin21
 
 #setup the pin mode for the GPIO
 GPIO.setmode(GPIO.BCM)
-
 
 #turn off the warnings, this is optional
 GPIO.setwarnings(False)
@@ -62,12 +63,15 @@ try:
       #capture and print the input from the reed switch using GPIO.input
       # readSensor = GPIO.input(sensor)
         speedometer.calculateSpeed(2)
-        print(speedometer)
+        # print(speedometer)
+
+        speedometer.printData()
         print(readSensor)
         if (readSensor == 0):
             GPIO.output(LED, False)
         else:
             GPIO.output(LED, True)
+            speedometer()
             sleep(.5)
 
       #if the captured input is 1, then pull a LED high (True)
