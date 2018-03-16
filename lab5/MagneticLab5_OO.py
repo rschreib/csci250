@@ -9,6 +9,7 @@ from time import sleep
 
 class Speedometer():
    def calculateSpeed(self, radius_cm):
+       self.elapsedTime = time.time() - self.startTime
       self.speedMPS = 2*3.14159*radius_cm / self.elapsedTime
    def __init__(self):
       self.elapsedTime = 0
