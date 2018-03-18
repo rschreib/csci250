@@ -58,7 +58,7 @@ try:
         # print(speedometer)
         # speedometer(sensor)
         # speedometer.printData()
-        print(readSensor, " ",count)
+        # print(readSensor, " ",count)
         if (readSensor == 1):       # if the captured input is 1, then pull a LED high (True)
             GPIO.output(LED, True)
 
