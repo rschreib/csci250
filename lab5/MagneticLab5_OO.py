@@ -61,6 +61,7 @@ try:
         print(readSensor, " ",count)
         if (readSensor == 1):       # if the captured input is 1, then pull a LED high (True)
             GPIO.output(LED, True)
+            sleep(.2)
         else:                       # otherwise, pull a LED low (False)
             GPIO.output(LED, False)
             #sleep for a bit, just to slow things down, how long is up to you
