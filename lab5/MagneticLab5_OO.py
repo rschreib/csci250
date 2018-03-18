@@ -19,7 +19,7 @@ class Speedometer():
       self.pulseCount = 0
    def __call__(self,channel):
       self.pulseCount += 1
-      print("hi")
+      print("hi:",channel)
       # self.elapsedTime = time.time() - self.startTime
       # self.calculateSpeed(2)
       # self.totalDistance += self.speedMPS*self.elapsedTime
