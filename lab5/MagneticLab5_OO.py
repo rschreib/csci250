@@ -9,7 +9,6 @@ from time import sleep
 
 class Speedometer():
    def calculateSpeed(self, radius_cm):
-      self.elapsedTime = time.time() - self.startTime
       self.speedMPS = 2*3.14159*radius_cm / self.elapsedTime
    def __init__(self):
       self.elapsedTime = 0.0
@@ -19,18 +18,19 @@ class Speedometer():
       self.pulseCount = 0
    def __call__(self,channel):
       self.pulseCount += 1
-      print("hi:",channel)
-      # self.elapsedTime = time.time() - self.startTime
-      # self.calculateSpeed(2)
-      # self.totalDistance += self.speedMPS*self.elapsedTime
+      self.elapsedTime = time.time() - self.startTime
+      self.calculateSpeed(2)
+      self.totalDistance += self.speedMPS*self.elapsedTime
+      self.printData()
+      self.startTime = time.time()
    def printData(self):
       print("Elapsed Time:",self.elapsedTime)
       print("Start Time:",self.startTime)
       print("Total Distance:",self.totalDistance)
       print("Pulse Count:",self.pulseCount)
       print("SpeedMPS:",self.speedMPS)
-   def __repr__(self):
-      self.printData()
+   # def __repr__(self):
+   #    self.printData()
 
 #setup two variables to hold the values for the pin numbers
 #(one for LED and one for reed switch)
@@ -61,6 +61,7 @@ try:
         print(readSensor, " ",count)
         if (readSensor == 1):       # if the captured input is 1, then pull a LED high (True)
             GPIO.output(LED, True)
+
             sleep(.2)
         else:                       # otherwise, pull a LED low (False)
             GPIO.output(LED, False)
