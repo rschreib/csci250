@@ -1,6 +1,8 @@
 #Author: Robert Schreibman
 #Date: 3/8/18
 #Description: Magnetic Sensor
+# LED turns on when magnet is detected and speedometer is updated on falling edge
+# after magnet leaves
 
 #import the GPIO and time libraries
 import RPi.GPIO as GPIO
@@ -31,22 +33,23 @@ class Speedometer():
       print("Total Distance:\t%.4f m" % self.totalDistance)
       print()
 
-   # def __repr__(self):
-   #    self.printData()
-
 #setup two variables to hold the values for the pin numbers
 #(one for LED and one for reed switch)
 sensor = 20 #pin20
 LED = 21 #pin21
 #setup the pin mode for the GPIO
 GPIO.setmode(GPIO.BCM)
+
 #turn off the warnings, this is optional
 GPIO.setwarnings(False)
+
 #setup the reed switch as an input pin
 #we need to add as a third argument, pull_up_down=GPIO.PUD_DOWN for resistance
 GPIO.setup(sensor, GPIO.IN, GPIO.PUD_DOWN)
+
 #setup the LED as an output pin
 GPIO.setup(LED, GPIO.OUT)
+
 #area for the logic to detect high/low from reed switch and light LED
 try:
     speedometer = Speedometer()
@@ -54,18 +57,11 @@ try:
     while True:
         #capture and print the input from the reed switch using GPIO.input
         readSensor = GPIO.input(sensor)
-        # speedometer.calculateSpeed(2)
-        # print(speedometer)
-        # speedometer(sensor)
-        # speedometer.printData()
-        # print(readSensor, " ",count)
         if (readSensor == 1):       # if the captured input is 1, then pull a LED high (True)
             GPIO.output(LED, True)
             sleep(.02)
         else:                       # otherwise, pull a LED low (False)
             GPIO.output(LED, False)
-
-
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):
