@@ -24,7 +24,7 @@ class Speedometer():
       self.printData()
       self.startTime = time.time()
    def printData(self):
-      print("Pulse Count:\t",self.pulseCount)
+      print("Pulse Count:\t%i" % self.pulseCount)
       print("Start Time:\t%.2f seconds (since 1970 January 1st)" % self.startTime)
       print("Elapsed Time:\t%.2f" % self.elapsedTime)
       print("SpeedMPS:\t%.2f mps" % self.speedMPS)
