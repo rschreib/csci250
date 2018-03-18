@@ -9,7 +9,7 @@ from time import sleep
 
 class Speedometer():
    def calculateSpeed(self, radius_cm):
-      self.speedMPS = 2*3.14159*radius_cm / self.elapsedTime
+      self.speedMPS = 2*3.14159*(radius_cm/100.0) / self.elapsedTime
    def __init__(self):
       self.elapsedTime = 0.0
       self.startTime = time.time()
@@ -19,16 +19,16 @@ class Speedometer():
    def __call__(self,channel):
       self.pulseCount += 1
       self.elapsedTime = time.time() - self.startTime
-      self.calculateSpeed(2)
+      self.calculateSpeed(2)    # RADIUS = 2
       self.totalDistance += self.speedMPS*self.elapsedTime
       self.printData()
       self.startTime = time.time()
    def printData(self):
       print("Pulse Count:\t",self.pulseCount)
-      print("Start Time:\t%.2fseconds (since 1970 January 1st)" % self.startTime)
+      print("Start Time:\t%.2f seconds (since 1970 January 1st)" % self.startTime)
       print("Elapsed Time:\t%.2f" % self.elapsedTime)
       print("SpeedMPS:\t%.2f mps" % self.speedMPS)
-      print("Total Distance:\t%.2f cm" % self.totalDistance)
+      print("Total Distance:\t%.2f m" % self.totalDistance)
       print()
 
    # def __repr__(self):
@@ -61,12 +61,9 @@ try:
         # print(readSensor, " ",count)
         if (readSensor == 1):       # if the captured input is 1, then pull a LED high (True)
             GPIO.output(LED, True)
-
             sleep(.02)
         else:                       # otherwise, pull a LED low (False)
             GPIO.output(LED, False)
-            #sleep for a bit, just to slow things down, how long is up to you
-            sleep(.02)
 
 
 
