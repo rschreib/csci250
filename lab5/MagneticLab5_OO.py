@@ -25,7 +25,7 @@ class Speedometer():
       self.startTime = time.time()
    def printData(self):
       print("Pulse Count:\t",self.pulseCount)
-      print("Start Time:\t%.2f" % self.startTime)
+      print("Start Time:\t%.2fseconds (since 1970 January 1st)" % self.startTime)
       print("Elapsed Time:\t%.2f" % self.elapsedTime)
       print("SpeedMPS:\t%.2f mps" % self.speedMPS)
       print("Total Distance:\t%.2f cm" % self.totalDistance)
@@ -51,11 +51,9 @@ GPIO.setup(LED, GPIO.OUT)
 try:
     speedometer = Speedometer()
     readSensor = GPIO.add_event_detect(sensor,GPIO.FALLING,callback=speedometer, bouncetime = 25)
-    count = 0
     while True:
         #capture and print the input from the reed switch using GPIO.input
         readSensor = GPIO.input(sensor)
-        count +=1
         # speedometer.calculateSpeed(2)
         # print(speedometer)
         # speedometer(sensor)
@@ -64,11 +62,11 @@ try:
         if (readSensor == 1):       # if the captured input is 1, then pull a LED high (True)
             GPIO.output(LED, True)
 
-            sleep(.2)
+            sleep(.02)
         else:                       # otherwise, pull a LED low (False)
             GPIO.output(LED, False)
             #sleep for a bit, just to slow things down, how long is up to you
-            sleep(.2)
+            sleep(.02)
 
 
 
