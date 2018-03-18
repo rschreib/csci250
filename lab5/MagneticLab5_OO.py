@@ -26,9 +26,9 @@ class Speedometer():
    def printData(self):
       print("Pulse Count:\t%i" % self.pulseCount)
       print("Start Time:\t%.2f seconds (since 1970 January 1st)" % self.startTime)
-      print("Elapsed Time:\t%.2f" % self.elapsedTime)
-      print("SpeedMPS:\t%.2f mps" % self.speedMPS)
-      print("Total Distance:\t%.2f m" % self.totalDistance)
+      print("Elapsed Time:\t%.4f" % self.elapsedTime)
+      print("SpeedMPS:\t%.4f mps" % self.speedMPS)
+      print("Total Distance:\t%.4f m" % self.totalDistance)
       print()
 
    # def __repr__(self):
