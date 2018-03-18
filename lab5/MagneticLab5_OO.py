@@ -54,21 +54,15 @@ try:
         # speedometer.calculateSpeed(2)
         # print(speedometer)
         # speedometer(sensor)
-        speedometer.printData()
+        # speedometer.printData()
         print(readSensor)
-        if (readSensor == 0):
-            GPIO.output(LED, False)
-        else:
+        if (readSensor == 1):       # if the captured input is 1, then pull a LED high (True)
             GPIO.output(LED, True)
+        else:                       # otherwise, pull a LED low (False)
+            GPIO.output(LED, False)
+            #sleep for a bit, just to slow things down, how long is up to you
             sleep(.2)
 
-      #if the captured input is 1, then pull a LED high (True)
-
-
-      #otherwise, pull a LED low (False)
-
-
-      #sleep for a bit, just to slow things down, how long is up to you
 
 
 #capture the control c and exit cleanly
