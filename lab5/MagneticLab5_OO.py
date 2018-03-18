@@ -21,7 +21,7 @@ class Speedometer():
       self.pulseCount += 1
       # self.elapsedTime = time.time() - self.startTime
       self.calculateSpeed(2)
-      self.totalDistance = self.speedMPS*self.elapsedTime
+      self.totalDistance += self.speedMPS*self.elapsedTime
    def printData(self):
       print("Elapsed Time:",self.elapsedTime)
       print("Start Time:",self.startTime)
@@ -35,42 +35,32 @@ class Speedometer():
 #(one for LED and one for reed switch)
 sensor = 20 #pin20
 LED = 21 #pin21
-
 #setup the pin mode for the GPIO
 GPIO.setmode(GPIO.BCM)
-
 #turn off the warnings, this is optional
 GPIO.setwarnings(False)
-
 #setup the reed switch as an input pin
 #we need to add as a third argument, pull_up_down=GPIO.PUD_DOWN for resistance
 GPIO.setup(sensor, GPIO.IN, GPIO.PUD_DOWN)
-
 #setup the LED as an output pin
 GPIO.setup(LED, GPIO.OUT)
-
-def my_callback(channel,Speedometer):
-    print("led")
-    # print(speedometer)
 #area for the logic to detect high/low from reed switch and light LED
 try:
     speedometer = Speedometer()
-    readSensor = GPIO.add_event_detect(sensor,GPIO.FALLING,callback=my_callback, bouncetime = 25)
-    GPIO.add_event_callback(sensor, my_callback)
+    readSensor = GPIO.add_event_detect(sensor,GPIO.FALLING,callback=speedometer(), bouncetime = 25)
     while True:
       #capture and print the input from the reed switch using GPIO.input
       # readSensor = GPIO.input(sensor)
         # speedometer.calculateSpeed(2)
         # print(speedometer)
-        speedometer(sensor)
+        # speedometer(sensor)
         speedometer.printData()
         print(readSensor)
         if (readSensor == 0):
             GPIO.output(LED, False)
         else:
             GPIO.output(LED, True)
-
-            sleep(.5)
+            sleep(.2)
 
       #if the captured input is 1, then pull a LED high (True)
 
