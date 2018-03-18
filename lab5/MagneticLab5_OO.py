@@ -24,11 +24,11 @@ class Speedometer():
       self.printData()
       self.startTime = time.time()
    def printData(self):
-      print("Elapsed Time:\t",self.elapsedTime)
-      print("Start Time:\t",self.startTime)
-      print("Total Distance:\t",self.totalDistance)
       print("Pulse Count:\t",self.pulseCount)
-      print("SpeedMPS:\t",self.speedMPS)
+      print("Start Time:\t",self.startTime)
+      print("Elapsed Time:\t",self.elapsedTime)
+      print("SpeedMPS:\t",self.speedMPS, "mps")
+      print("Total Distance:\t",self.totalDistance,"cm")
       print()
 
    # def __repr__(self):
