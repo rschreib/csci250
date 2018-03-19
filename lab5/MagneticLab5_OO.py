@@ -56,8 +56,8 @@ try:
     readSensor = GPIO.add_event_detect(sensor,GPIO.FALLING,callback=speedometer, bouncetime = 25)
     while True:
         #capture and print the input from the reed switch using GPIO.input
-        readSensor = GPIO.input(sensor)
-        if (readSensor == 1):       # if the captured input is 1, then pull a LED high (True)
+        read_Sensor = GPIO.input(sensor)
+        if (read_Sensor == 1):       # if the captured input is 1, then pull a LED high (True)
             GPIO.output(LED, True)
             sleep(.02)
         else:                       # otherwise, pull a LED low (False)
