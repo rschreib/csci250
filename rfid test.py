@@ -26,14 +26,14 @@ flag = 0
 firstvalue = 9
 try:
     while True:
-        print(GPIO.input(pin20))
+        value = GPIO.input(pin20)
+        print(value)
         if flag == 0:
             flag = 1
             firstvalue = GPIO.input(pin20)
-        else:
-            if GPIO.input(pin20 != firstvalue):
-                break
-            
+        if GPIO.input(value != firstvalue):
+            break
+
 
         #Parameters for write_byte_data
         # #1. Address of the device
