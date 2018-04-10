@@ -22,10 +22,19 @@ GPIO.setup(pin20,GPIO.IN)
 
 # Get I2C bus - initial bus to channel 1
 # bus = smbus.SMBus(1)
-
+flag = 0
+firstvalue = 9
 try:
     while True:
         print(GPIO.input(pin20))
+        if flag == 0:
+            flag = 1
+            firstvalue = GPIO.input(pin20)
+        else:
+            if GPIO.input(pin20 != firstvalue):
+                break
+            
+
         #Parameters for write_byte_data
         # #1. Address of the device
         # #2. Communication data - active mode control register
