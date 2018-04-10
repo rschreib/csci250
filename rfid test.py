@@ -31,7 +31,7 @@ try:
         if flag == 0:
             flag = 1
             firstvalue = GPIO.input(pin20)
-        if GPIO.input(value != firstvalue):
+        if value != firstvalue:
             break
 
 
