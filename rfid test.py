@@ -26,7 +26,6 @@ GPIO.setup(pin20,GPIO.IN)
 try:
     while True:
         print(GPIO.input(pin20))
-        sleep(1)
         #Parameters for write_byte_data
         # #1. Address of the device
         # #2. Communication data - active mode control register
